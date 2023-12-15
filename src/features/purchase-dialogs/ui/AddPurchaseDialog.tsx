@@ -1,9 +1,11 @@
 import { Modal } from "antd";
 
-import PurchaseFrom, { Action } from "./PurchaseFrom";
-import { PurchaseSubmitType } from "../store/types";
-import { purchaseStore } from "../store/purchaseStore";
+import PurchaseFrom from "./PurchaseFrom";
+
 import dayjs from "dayjs";
+import { PurchaseSubmitType } from "../../../shared/Purchase/types";
+import { addPurchase } from "../../purchase-table/model";
+import { Action } from "../../../shared/common";
 
 type PurchaseDialogProps = {
   actions: Action[];
@@ -17,13 +19,13 @@ export default function AddPurchaseDialog({
   actions,
 }: PurchaseDialogProps) {
   const onAddPurchase = (values: PurchaseSubmitType) => {
-    purchaseStore.addPurchase({
+    addPurchase({
       productName: values.productName,
       category: values.category,
       price: values.price,
       quantity: values.quantity,
       total: values.price * values.quantity,
-      purchaseDate: dayjs(values.purchaseDate).format("YYYY-MM-DD"), // предполагая, что вы используете DatePicker от Ant Design
+      purchaseDate: dayjs(values.purchaseDate).format("YYYY-MM-DD"), // DatePicker от Ant Design
     });
     onOpen(false);
   };

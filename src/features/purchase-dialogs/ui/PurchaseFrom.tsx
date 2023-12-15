@@ -1,23 +1,12 @@
 import { DatePicker, Form, Input, InputNumber, Select, Button } from "antd";
-import { Category, Purchase, PurchaseSubmitType } from "../store/types";
 import { useState } from "react";
 import dayjs from "dayjs";
-
-export enum ButtonType {
-  Primary = "primary",
-  Secondary = "secondary",
-}
-
-export enum HtmlButtonType {
-  Submit = "submit",
-}
-
-export type Action = {
-  label: string;
-  action: () => void;
-  type: ButtonType;
-  htmlType?: HtmlButtonType;
-};
+import {
+  Category,
+  Purchase,
+  PurchaseSubmitType,
+} from "../../../shared/Purchase/types";
+import { Action } from "../../../shared/common";
 
 type PurchaseFromProps = {
   submit: (values: PurchaseSubmitType) => void;

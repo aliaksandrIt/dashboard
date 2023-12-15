@@ -1,8 +1,9 @@
 import { Modal } from "antd";
 
-import PurchaseFrom, { Action } from "./PurchaseFrom";
-import { purchaseStore } from "../store/purchaseStore";
-import { Purchase } from "../store/types";
+import PurchaseFrom from "./PurchaseFrom";
+import { Purchase } from "../../../shared/Purchase/types";
+import { editPurchase } from "../../purchase-table/model";
+import { Action } from "../../../shared/common";
 
 type PurchaseDialogProps = {
   actions: Action[];
@@ -18,7 +19,7 @@ export default function EditPurchaseDialog({
   currentPurchase,
 }: PurchaseDialogProps) {
   const onEditFinish = (values: any) => {
-    purchaseStore.editPurchase(currentPurchase.id, values);
+    editPurchase(currentPurchase.id, values);
     onOpen(false);
   };
 
