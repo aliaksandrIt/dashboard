@@ -46,13 +46,13 @@ export const PurchaseDashBoard: React.FC = observer(() => {
   };
 
   //check memo
-  const filteredData = useMemo(() => {
-    return purchaseStore.purchaseList.filter((purchase: Purchase) => {
+  const filteredData = purchaseStore.purchaseList.filter(
+    (purchase: Purchase) => {
       return purchase.productName
         .toLowerCase()
         .includes(searchText.toLowerCase());
-    });
-  }, [searchText]);
+    }
+  );
 
   return (
     <>

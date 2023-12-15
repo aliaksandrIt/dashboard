@@ -2,6 +2,8 @@ import { Button, Table } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Purchase } from "../../../shared/Purchase/types";
 import { memo } from "react";
+import { categoryFilters } from "../lib/filters";
+import { Key } from "antd/es/table/interface";
 
 type PurchaseTableProps = {
   showEditModal: (currentPurchase: Purchase) => void;
@@ -32,8 +34,9 @@ function PurchaseTableComponent({
       title: "Category",
       dataIndex: "category",
       key: "category",
-      sorter: (a: Purchase, b: Purchase) =>
-        a.category.localeCompare(b.category),
+      filters: categoryFilters,
+      onFilter: (value: boolean | Key, record: Purchase) =>
+        record.category === value,
     },
     {
       title: "Price",
