@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Menu } from "antd";
+import Dashboard from "./pages/Dashboard";
+import Purchase from "./pages/PurchasePage";
 
-function App() {
+const App = () => {
+  const menuItems = [
+    {
+      key: "purchase",
+      label: <Link to="/purchase">Purchase</Link>,
+    },
+    {
+      key: "dashboard",
+      label: <Link to="/dashboard">Dashboard</Link>,
+    },
+    // Добавьте дополнительные пункты меню здесь
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: 256 }}>
+          <Menu items={menuItems} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/purchase" element={<Purchase />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
