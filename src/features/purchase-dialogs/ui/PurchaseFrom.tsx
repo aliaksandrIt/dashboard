@@ -1,4 +1,12 @@
-import { DatePicker, Form, Input, InputNumber, Select, Button } from "antd";
+import {
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Select,
+  Button,
+  Flex,
+} from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
 import {
@@ -99,13 +107,19 @@ export default function PurchaseFrom({
         <span>Total: {total}</span>
       </Form.Item>
       <Form.Item>
-        {actions.map((action, index) => {
-          return (
-            <Button key={index} htmlType={action.htmlType}>
-              {action.label}
-            </Button>
-          );
-        })}
+        <Flex gap={10}>
+          {actions.map((action, index) => {
+            return (
+              <Button
+                key={index + action.label}
+                type={action.type}
+                htmlType={action.htmlType}
+              >
+                {action.label}
+              </Button>
+            );
+          })}
+        </Flex>
       </Form.Item>
     </Form>
   );

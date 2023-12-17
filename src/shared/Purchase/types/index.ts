@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export type Purchase = {
   id: number;
   productName: string;
