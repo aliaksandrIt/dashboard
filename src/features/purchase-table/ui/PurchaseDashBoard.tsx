@@ -86,13 +86,12 @@ export const PurchaseDashBoard: React.FC = observer(() => {
             [
               {
                 label: "Cancel",
-                action: () => setIsAddModalVisible(false),
+                handler: () => setIsAddModalVisible(false),
                 type: ButtonType.Secondary,
               },
 
               {
                 label: "Add",
-                action: undefined,
                 htmlType: HtmlButtonType.Submit,
                 type: ButtonType.Primary,
               },
@@ -108,13 +107,12 @@ export const PurchaseDashBoard: React.FC = observer(() => {
               [
                 {
                   label: "Cancel",
-                  action: () => setIsEditModalVisible(false),
+                  handler: () => setIsEditModalVisible(false),
                   type: ButtonType.Secondary,
                 },
 
                 {
                   label: "Edit",
-                  action: undefined,
                   htmlType: HtmlButtonType.Submit,
                   type: ButtonType.Primary,
                 },

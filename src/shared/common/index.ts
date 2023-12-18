@@ -12,7 +12,7 @@ export enum HtmlButtonType {
 
 export type Action = {
   label: string;
-  action: () => void;
+  handler: () => void;
   type: ButtonType;
   htmlType?: HtmlButtonType;
 };

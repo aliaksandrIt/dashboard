@@ -117,6 +117,7 @@ export default function PurchaseFrom({
             {actions.map((action, index) => {
               return (
                 <Button
+                  onClick={action.handler || undefined}
                   key={index + action.label}
                   type={action.type}
                   htmlType={action.htmlType}
