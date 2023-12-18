@@ -1,8 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-// import "normalize.css";
+import "normalize.css";
 
 const GlobalStyle = createGlobalStyle`
-    font-family: 'Segoe Pro Regular';
+    body, .ant {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+    }
 `;
 
 export default GlobalStyle;

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { observer } from "mobx-react";
-import { Button, Input } from "antd";
+import { Button, Col, Flex, Input } from "antd";
 import { Purchase } from "../../../shared/Purchase/types";
 import { prepopulateStore, purchaseStore, removePurchase } from "../model";
 import { PurchaseTable } from "./PurchaseTable";
@@ -10,11 +10,11 @@ import {
   ButtonType,
   HtmlButtonType,
   StyledContent,
-  StyledHeader,
 } from "../../../shared/common";
 import EditPurchaseDialog from "../../purchase-dialogs/ui/EditPurchaseDialog";
 import PrepopulatedDialog from "../../purchase-dialogs/ui/PrepopulatedDialog";
 import styled from "styled-components";
+import { device } from "../../../app/styles/breakPoints";
 
 export const PurchaseDashBoard: React.FC = observer(() => {
   const [searchText, setSearchText] = useState("");
@@ -63,17 +63,17 @@ export const PurchaseDashBoard: React.FC = observer(() => {
   return (
     <>
       <StyledContent>
-        <FlexContainer>
+        <DashboardControls gap={"middle"}>
           <Input
             placeholder="Search by product name"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <Button type="primary" onClick={showAddModal}>
+          <Button onClick={showPrepopulateModal}>Prepopulate</Button>
+          <Button type={ButtonType.Primary} onClick={showAddModal}>
             Add Purchase
           </Button>
-          <Button onClick={showPrepopulateModal}>Prepopulate</Button>
-        </FlexContainer>
+        </DashboardControls>
         <PurchaseTable
           showEditModal={showEditModal}
           handleDelete={handlePurchaseDelete}
@@ -132,12 +132,12 @@ export const PurchaseDashBoard: React.FC = observer(() => {
   );
 });
 
-const FlexContainer = styled.div`
+const DashboardControls = styled(Flex)`
   display: flex;
-  column-gap: 20px;
-  justify-content: space-around; // или другое свойство для распределения пространства
-  align-items: center; // для выравнивания элементов по центру
-  padding: 20px; // отступ внутри контейнера
-  background-color: #f0f0f0; // фон контейнера
-  border-radius: 10px; // скругление углов контейнера
+  flex-direction: column-reverse;
+  margin-bottom: 20px;
+
+  @media screen and ${device.mobile} {
+    flex-direction: row;
+  }
 `;

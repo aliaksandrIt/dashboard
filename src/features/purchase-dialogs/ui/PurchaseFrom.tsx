@@ -38,6 +38,7 @@ export default function PurchaseFrom({
   };
   return (
     <Form
+      layout="vertical"
       key={initialValues ? initialValues.id : "new"}
       initialValues={{
         ...initialValues,
@@ -47,12 +48,14 @@ export default function PurchaseFrom({
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
+        label="Product name:"
         name="productName"
         rules={[{ required: true, message: "Please input the product name!" }]}
       >
         <Input placeholder="Product Name" />
       </Form.Item>
       <Form.Item
+        label="Purchase date:"
         name="purchaseDate"
         rules={[
           { required: true, message: "Please select the purchase date!" },
@@ -60,8 +63,8 @@ export default function PurchaseFrom({
       >
         <DatePicker style={{ width: "100%" }} />
       </Form.Item>
-
       <Form.Item
+        label="Category:"
         name="category"
         rules={[{ required: true, message: "Please select a category!" }]}
       >
@@ -73,54 +76,58 @@ export default function PurchaseFrom({
           ))}
         </Select>
       </Form.Item>
-      <Form.Item
-        label="Price"
-        name="price"
-        rules={[{ required: true, message: "Please input the price!" }]}
-      >
-        <InputNumber
-          min={0}
-          value={price}
-          onChange={(value) => {
-            const newPrice = value ?? 0; // Установка 0, если значение null
-            setPrice(newPrice);
-            setTotal(newPrice * quantity);
-          }}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Quantity"
-        name="quantity"
-        rules={[{ required: true, message: "Please input the quantity!" }]}
-      >
-        <InputNumber
-          min={1}
-          value={quantity}
-          onChange={(value) => {
-            const newQuantity = value ?? 1; // Установка 1, если значение null
-            setQuantity(newQuantity);
-            setTotal(price * newQuantity);
-          }}
-        />
-      </Form.Item>
+      <Flex gap={"middle"} align={"flex-end"}>
+        <Form.Item
+          label="Price per item:"
+          name="price"
+          rules={[{ required: true, message: "Please input the price!" }]}
+        >
+          <InputNumber
+            min={0}
+            value={price}
+            onChange={(value) => {
+              const newPrice = value ?? 0; // Установка 0, если значение null
+              setPrice(newPrice);
+              setTotal(newPrice * quantity);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Quantity:"
+          name="quantity"
+          rules={[{ required: true, message: "Please input the quantity!" }]}
+        >
+          <InputNumber
+            min={1}
+            value={quantity}
+            onChange={(value) => {
+              const newQuantity = value ?? 1; // Установка 1, если значение null
+              setQuantity(newQuantity);
+              setTotal(price * newQuantity);
+            }}
+          />
+        </Form.Item>
+      </Flex>
       <Form.Item>
-        <span>Total: {total}</span>
+        <span>Total price: {total}</span>
       </Form.Item>
-      <Form.Item>
-        <Flex gap={10}>
-          {actions.map((action, index) => {
-            return (
-              <Button
-                key={index + action.label}
-                type={action.type}
-                htmlType={action.htmlType}
-              >
-                {action.label}
-              </Button>
-            );
-          })}
-        </Flex>
-      </Form.Item>
+      <Flex justify={"flex-end"}>
+        <Form.Item>
+          <Flex gap={"small"}>
+            {actions.map((action, index) => {
+              return (
+                <Button
+                  key={index + action.label}
+                  type={action.type}
+                  htmlType={action.htmlType}
+                >
+                  {action.label}
+                </Button>
+              );
+            })}
+          </Flex>
+        </Form.Item>
+      </Flex>
     </Form>
   );
 }

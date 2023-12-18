@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { Dashboard } from "./pages";
 import { PurchasePage } from "./pages";
-import GlobalStyle from "./app/GlobalStyle";
-import { StyledContent, StyledHeader, StyledSider } from "./shared/common";
+import { StyledSider } from "./shared/common";
 import { useState } from "react";
 import { TableOutlined, BarChartOutlined } from "@ant-design/icons";
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
+
   const menuItems = [
     {
       key: "purchase",
@@ -25,7 +25,6 @@ const App = () => {
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
-        <GlobalStyle />
         <StyledSider
           collapsible
           collapsed={collapsed}

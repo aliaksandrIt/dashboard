@@ -7,7 +7,6 @@ interface FlexProps {
   flxEnd?: boolean;
   gap?: string;
   children: ReactNode;
-  // Add any other necessary props
 }
 
 export const Flex = styled.div<FlexProps>`

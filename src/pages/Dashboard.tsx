@@ -9,7 +9,9 @@ import SalesByCategoryPieChart from "../features/charts/ui/SalesByCategoryPieCha
 import { aggregateSalesByCategory } from "../features/charts/lib/aggregateSalesByCategory";
 import { aggregateSalesOverTime } from "../features/charts/lib/aggregateSalesOverTime";
 import { SalesOverTimeLineChart } from "../features/charts/ui/SalesOverTimeLineChart";
-import { StyledHeader } from "../shared/common";
+import { AppHeader } from "../shared/common";
+import { Header1 } from "../shared/components/StyledHeader";
+import Box from "../shared/components/Box";
 
 const DashboardComponent: React.FC = () => {
   const dataForChart = aggregateDataByCategory();
@@ -22,7 +24,11 @@ const DashboardComponent: React.FC = () => {
 
   return (
     <div>
-      <StyledHeader>Dashboards</StyledHeader>
+      <AppHeader>
+        <Box mx="10px">
+          <Header1>Dashboard</Header1>
+        </Box>
+      </AppHeader>
       <div style={{ width: 300 }}>
         <h3>Number of purchases by category</h3>
         <CategoryPieChart data={dataForChart} />

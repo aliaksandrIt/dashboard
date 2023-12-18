@@ -19,13 +19,8 @@ export type Action = {
 
 const { Header, Content, Sider } = Layout;
 
-export const StyledHeader = styled(Header)`
-  display: flex;
-  align-items: center
-  padding: 2em;
-  font-size: 2rem;
-  color: white;
-  /* Дополнительные стили для Header */
+export const AppHeader = styled(Header)`
+  padding: 0;
 `;
 
 export const StyledContent = styled(Content)`
