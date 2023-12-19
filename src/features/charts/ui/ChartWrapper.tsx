@@ -12,7 +12,7 @@ type ChartWrapperProps = {
 
 export const ChartWrapper = ({ title, children }: ChartWrapperProps) => {
   return (
-    <ShadowBox borderColor="gray" radius="3px" borderWidth="1px">
+    <ShadowBox radius="3px">
       <Box py="sm" px="md">
         <Flex vertical={true}>
           <Box m="md">
@@ -26,5 +26,6 @@ export const ChartWrapper = ({ title, children }: ChartWrapperProps) => {
 };
 
 const ShadowBox = styled(Box)`
+  border: 1 px solid gray;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;

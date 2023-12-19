@@ -78,6 +78,7 @@ function PurchaseTableComponent({
   ];
   return (
     <Table
+      rowKey="id"
       dataSource={filteredData}
       columns={columns}
       pagination={{ pageSize: 4 }}
