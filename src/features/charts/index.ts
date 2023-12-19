@@ -9,7 +9,6 @@ export {
 export {
   CategoryPieChart,
   ChartsList,
-  ComparisonBarChart,
   SalesByCategoryPieChart,
   SalesByProductBarChart,
   SalesOverTimeLineChart,

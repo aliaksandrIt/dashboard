@@ -4,16 +4,19 @@ export type AggregatedDataItem = {
   category: Category;
   count: number;
 };
+const countByCategory: Record<Category, number> = {
+  [Category.Meat]: 0,
+  [Category.Fruits]: 0,
+  [Category.Vegetables]: 0,
+  [Category.Fish]: 0,
+};
 
 export const aggregateDataByCategory = (
   purchases: Purchase[]
 ): AggregatedDataItem[] => {
-  const countByCategory: Record<Category, number> = {
-    [Category.Meat]: 0,
-    [Category.Fruits]: 0,
-    [Category.Vegetables]: 0,
-    [Category.Fish]: 0,
-  };
+  if (!purchases.length) {
+    return [];
+  }
 
   purchases.forEach((purchase) => {
     countByCategory[purchase.category] += 1;

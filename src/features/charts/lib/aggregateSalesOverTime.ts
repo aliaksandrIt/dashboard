@@ -4,6 +4,10 @@ import { Purchase } from "../../../shared/Purchase/types";
 export const aggregateSalesOverTime = (
   purchases: Purchase[]
 ): { date: string; totalSales: number }[] => {
+  if (!purchases.length) {
+    return [];
+  }
+
   const salesOverTime: Record<string, number> = {};
 
   purchases.forEach(({ purchaseDate, total }) => {

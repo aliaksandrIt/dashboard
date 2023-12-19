@@ -1,5 +1,6 @@
 import React from "react";
 import { Bar } from "@ant-design/plots";
+import { NothinToDisplay } from "./NothinToDisplay";
 
 type BarChartProps = {
   data: { productName: string; totalSales: number }[];
@@ -10,18 +11,9 @@ export const SalesByProductBarChart: React.FC<BarChartProps> = ({ data }) => {
     data,
     xField: "totalSales",
     yField: "productName",
-    xAxis: {
-      label: {
-        // Настройки для оси X
-      },
-    },
-    yAxis: {
-      label: {
-        // Настройки для оси Y
-      },
-    },
-    // другие настройки по желанию
   };
 
-  return <Bar {...config} />;
+  return (
+    <>{data && data.length > 0 ? <Bar {...config} /> : <NothinToDisplay />}</>
+  );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Pie } from "@ant-design/plots";
 import { AggregatedDataItem } from "../lib/aggregateDataByCategory";
+import { NothinToDisplay } from "./NothinToDisplay";
 
 type PieChartProps = {
   data: AggregatedDataItem[];
@@ -17,5 +18,7 @@ export const CategoryPieChart: React.FC<PieChartProps> = ({ data }) => {
     interactions: [{ type: "element-selected" }, { type: "element-active" }],
   };
 
-  return <Pie {...config} />;
+  return (
+    <>{data && data.length > 0 ? <Pie {...config} /> : <NothinToDisplay />}</>
+  );
 };

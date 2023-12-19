@@ -3,6 +3,9 @@ import { Purchase } from "../../../shared/Purchase/types";
 export const aggregateSalesByProduct = (
   purchases: Purchase[]
 ): { productName: string; totalSales: number }[] => {
+  if (!purchases.length) {
+    return [];
+  }
   const salesByProduct: Record<string, number> = {};
 
   purchases.forEach(({ productName, total }) => {
