@@ -1,47 +1,48 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import { Dashboard } from "./pages";
 import { PurchasePage } from "./pages";
 import { useState } from "react";
-import { TableOutlined, BarChartOutlined } from "@ant-design/icons";
-import { StyledSider } from "./shared/components";
+import { AppHeader, StyledSider, Title } from "./shared/components";
+import { AppMenu } from "./shared/components/AppMenu";
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [title, setTitle] = useState("Главная");
+  const [activeMenu, setActiveMenu] = useState("1");
 
-  const menuItems = [
-    {
-      key: "purchase",
-      label: <Link to="/purchase">Purchase</Link>,
-      icon: <TableOutlined />,
-    },
-    {
-      key: "dashboard",
-      label: <Link to="/dashboard">Dashboard</Link>,
-      icon: <BarChartOutlined />,
-    },
-  ];
+  const handleMenuClick = (e: any) => {
+    setActiveMenu(e.key);
+    switch (e.key) {
+      case "purchase":
+        setTitle("Purchase");
+        break;
+      case "dashboard":
+        setTitle("Dashboard");
+        break;
+      default:
+        setTitle("");
+    }
+  };
 
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
-        <StyledSider
-          collapsible
-          collapsed={collapsed}
-          onCollapse={setCollapsed}
-        >
-          <Menu
-            theme="dark"
-            defaultSelectedKeys={["1"]}
-            mode="inline"
-            items={menuItems}
-          />
-        </StyledSider>
-        <Layout className="site-layout">
-          <Routes>
-            <Route path="/purchase" element={<PurchasePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
+        <AppHeader
+          activeMenu={activeMenu}
+          title={title}
+          handleMenu={handleMenuClick}
+        />
+        <Layout>
+          <StyledSider collapsible collapsed={visible} onCollapse={setVisible}>
+            <AppMenu activeMenu={activeMenu} handleMenu={handleMenuClick} />
+          </StyledSider>
+          <Layout className="site-layout">
+            <Routes>
+              <Route path="/purchase" element={<PurchasePage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </Layout>
         </Layout>
       </Layout>
     </Router>

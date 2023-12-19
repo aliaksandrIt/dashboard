@@ -36,6 +36,7 @@ export function PurchaseFrom({
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <Form
       layout="vertical"

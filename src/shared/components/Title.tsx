@@ -3,9 +3,15 @@ import { device } from "../../app/styles/breakPoints";
 import { colors } from "../../app/styles/colors";
 
 type TitleProps = {
-  type: "h1" | "h2" | "h3";
+  type: TitleType;
   color?: string;
 };
+
+export enum TitleType {
+  "H1" = "h1",
+  "H2" = "h2",
+  "H3" = "h3",
+}
 
 export const Title = styled.h1<TitleProps>`
   ${({ color }) => color && `color: ${color ?? colors.black}`};

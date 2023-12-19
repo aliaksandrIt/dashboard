@@ -21,8 +21,6 @@ const ChartsListComponent = () => {
     purchaseStore.purchaseList
   );
 
-  console.log(dataForCategoryChart, "==dataForCategoryChart");
-
   const salesByProductData = aggregateSalesByProduct(
     purchaseStore.purchaseList
   );

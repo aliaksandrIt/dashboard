@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Title } from "../../../shared/components";
 import { Box } from "../../../shared/components";
 import styled from "styled-components";
+import { TitleType } from "../../../shared/components/Title";
 
 type ChartWrapperProps = {
   title: string;
@@ -20,7 +21,7 @@ export const ChartWrapper = ({ title, children }: ChartWrapperProps) => {
     >
       <Flex vertical={true}>
         <Box mb="10px">
-          <Title type="h2">{title}</Title>
+          <Title type={TitleType.H2}>{title}</Title>
         </Box>
         <Box>{children}</Box>
       </Flex>
