@@ -1,4 +1,8 @@
-import { TableOutlined, BarChartOutlined } from "@ant-design/icons";
+import {
+  TableOutlined,
+  BarChartOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
 import { breakpoints } from "../../app/styles/breakPoints";
@@ -10,6 +14,11 @@ type Menu = {
 
 export function AppMenu({ handleMenu, activeMenu }: Menu) {
   const menuItems = [
+    {
+      key: "home",
+      label: <Link to="/">Home</Link>,
+      icon: <HomeOutlined />,
+    },
     {
       key: "purchase",
       label: <Link to="/purchase">Purchase</Link>,

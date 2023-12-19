@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { device } from "../../app/styles/breakPoints";
 import { Box } from "./Box";
 import { ButtonType } from "../types";
-
+import { padding, xPadding } from "../utils";
 type AppHeaderProps = {
   title: string;
   handleMenu: (value: any) => void;
@@ -55,7 +55,7 @@ export function AppHeader({ title, handleMenu, activeMenu }: AppHeaderProps) {
 
 const StyledDrawer = styled(Drawer)`
   .ant-drawer-body {
-    padding: 10px;
+    ${padding("md")}
 
     .ant-menu {
       border-right: 0;
@@ -64,7 +64,7 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledHeader = styled(Header)`
-  padding: 0 25px;
+  ${xPadding("lg")}
 `;
 
 const BurgerMenu = styled(Box)`

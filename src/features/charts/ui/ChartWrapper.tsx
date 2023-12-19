@@ -13,14 +13,14 @@ type ChartWrapperProps = {
 export const ChartWrapper = ({ title, children }: ChartWrapperProps) => {
   return (
     <ShadowBox
-      py="10px"
-      px="15px"
+      py="sm"
+      px="md"
       borderColor="gray"
       radius="3px"
       borderWidth="1px"
     >
       <Flex vertical={true}>
-        <Box mb="10px">
+        <Box m="md">
           <Title type={TitleType.H2}>{title}</Title>
         </Box>
         <Box>{children}</Box>

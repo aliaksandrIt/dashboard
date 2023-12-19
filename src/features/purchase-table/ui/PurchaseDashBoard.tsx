@@ -19,6 +19,7 @@ import { Action, ButtonType, HtmlButtonType } from "../../../shared/types";
 import styled from "styled-components";
 import { device } from "../../../app/styles/breakPoints";
 import dayjs from "dayjs";
+import { yMargin } from "../../../shared/utils";
 
 export const PurchaseDashBoard: React.FC = observer(() => {
   const [searchText, setSearchText] = useState("");
@@ -158,7 +159,7 @@ export const PurchaseDashBoard: React.FC = observer(() => {
 const DashboardControls = styled(Flex)`
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 20px;
+  ${yMargin("md")}
 
   @media screen and ${device.mobile} {
     flex-direction: row;

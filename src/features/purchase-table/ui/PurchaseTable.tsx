@@ -66,7 +66,6 @@ function PurchaseTableComponent({
             type="link"
             onClick={() => showEditModal(record)}
             icon={<EditOutlined />}
-            style={{ marginRight: 8 }}
           />
           <Button
             type="link"

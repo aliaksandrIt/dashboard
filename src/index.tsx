@@ -1,16 +1,43 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import GlobalStyle from "./app/GlobalStyle";
+import { createRoot } from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Dashboard, ErrorPage, PurchasePage } from "./pages";
+import { HomePage } from "./pages/HomePage";
 
-ReactDOM.render(
-  <React.StrictMode>
+const root = document.getElementById("root");
+
+if (!root) {
+  throw new Error("root ins not defined");
+}
+
+const container = createRoot(root);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "purchase",
+        element: <PurchasePage />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "",
+        element: <HomePage />,
+      },
+    ],
+  },
+]);
+
+container.render(
+  <>
     <GlobalStyle />
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+    <RouterProvider router={router} />
+  </>
 );
-
-reportWebVitals();
