@@ -1,5 +1,5 @@
 import { parseISO, format } from "date-fns";
-import { Purchase } from "../../../shared/Purchase/types";
+import { Purchase } from "../../../shared/types";
 
 export const aggregateSalesOverTime = (
   purchases: Purchase[]

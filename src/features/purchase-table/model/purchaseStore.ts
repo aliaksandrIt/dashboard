@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { Purchase } from "../../../shared/Purchase/types";
+import { Purchase } from "../../../shared/types";
 
 class PurchaseStore {
   purchaseList: Purchase[] = [];

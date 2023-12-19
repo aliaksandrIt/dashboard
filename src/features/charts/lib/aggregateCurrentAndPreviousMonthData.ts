@@ -4,7 +4,7 @@ import {
   subMonths,
   isWithinInterval,
 } from "date-fns";
-import { Purchase } from "../../../shared/Purchase/types";
+import { Purchase } from "../../../shared/types";
 import { purchaseStore } from "../../purchase-table/model";
 
 export type ComparisonDataItem = {
