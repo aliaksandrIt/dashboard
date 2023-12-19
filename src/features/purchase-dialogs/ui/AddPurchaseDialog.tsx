@@ -1,7 +1,6 @@
 import { Modal } from "antd";
 
-import { PurchaseFormValues } from "../../../shared/Purchase/types";
-import { Action } from "../../../shared/types";
+import { Action, PurchaseFormValues } from "../../../shared/types";
 import { PurchaseFrom } from ".";
 
 type PurchaseDialogProps = {

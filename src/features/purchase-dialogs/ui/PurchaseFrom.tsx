@@ -12,8 +12,9 @@ import dayjs from "dayjs";
 import {
   Category,
   Purchase,
+  PurchaseFormType,
   PurchaseFormValues,
-} from "../../../shared/Purchase/types";
+} from "../../../shared/types";
 import { Action } from "../../../shared/types";
 
 type PurchaseFromProps = {
@@ -45,7 +46,15 @@ export function PurchaseFrom({
         ...initialValues,
         purchaseDate: dayjs(initialValues?.purchaseDate),
       }}
-      onFinish={submit}
+      onFinish={(values) => {
+        submit({
+          ...initialValues,
+          ...values,
+          type: initialValues
+            ? PurchaseFormType.Existing
+            : PurchaseFormType.New,
+        });
+      }}
       onFinishFailed={onFinishFailed}
     >
       <Form.Item

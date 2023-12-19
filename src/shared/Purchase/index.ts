@@ -1,1 +1,0 @@
-export { purchasePrepopulatedData } from "./prepopulatedData";

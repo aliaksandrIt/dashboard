@@ -1,7 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { observer } from "mobx-react";
 import { Button, Flex, Input } from "antd";
-import { Purchase, PurchaseFormValues } from "../../../shared/Purchase/types";
+import {
+  Purchase,
+  PurchaseFormType,
+  PurchaseFormValues,
+} from "../../../shared/types";
 import {
   addPurchase,
   editPurchase,
@@ -45,8 +49,8 @@ export const PurchaseDashBoard: React.FC = observer(() => {
   }, []);
 
   const showEditModal = useCallback((record: Purchase) => {
-    setCurrentRecord(record);
     setIsEditModalVisible(true);
+    setCurrentRecord(record);
   }, []);
 
   const filteredData = purchaseStore.purchaseList.filter(
@@ -59,7 +63,10 @@ export const PurchaseDashBoard: React.FC = observer(() => {
 
   //Discriminated Unions
   const formSubmit = useCallback((values: PurchaseFormValues) => {
-    if (values.type === "new") {
+    if (values.type === PurchaseFormType.Existing) {
+      editPurchase(values);
+      setIsEditModalVisible(false);
+    } else if (values.type === PurchaseFormType.New) {
       addPurchase({
         productName: values.productName,
         category: values.category,
@@ -68,10 +75,7 @@ export const PurchaseDashBoard: React.FC = observer(() => {
         total: values.price * values.quantity,
         purchaseDate: dayjs(values.purchaseDate).format("YYYY-MM-DD"), // DatePicker от Ant Design
       });
-      setIsEditModalVisible(false);
-    } else if (values.type === "existing" && currentRecord) {
-      editPurchase(currentRecord.id, values);
-      setIsEditModalVisible(false);
+      setIsAddModalVisible(false);
     }
   }, []);
 
