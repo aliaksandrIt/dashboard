@@ -35,6 +35,7 @@ export function AppHeader({ title, handleMenu, activeMenu }: AppHeaderProps) {
             <MenuOutlined />
           </Button>
           <StyledDrawer
+            width={"200px"}
             title="Navigation"
             placement="left"
             closable={false}
@@ -53,8 +54,6 @@ export function AppHeader({ title, handleMenu, activeMenu }: AppHeaderProps) {
 }
 
 const StyledDrawer = styled(Drawer)`
-  width: 200px;
-
   .ant-drawer-body {
     padding: 10px;
 
