@@ -5,22 +5,18 @@ type PieChartProps = {
   data: { category: string; totalSales: number }[];
 };
 
-const SalesByCategoryPieChart: React.FC<PieChartProps> = ({ data }) => {
+export const SalesByCategoryPieChart: React.FC<PieChartProps> = ({ data }) => {
   const config = {
     data,
+    appendPadding: 10,
     angleField: "totalSales",
     colorField: "category",
     radius: 1,
     innerRadius: 0.6,
-    label: {
-      type: "spider",
-      labelHeight: 28,
-      content: "{name} ({percentage})",
-    },
+
+    interactions: [{ type: "element-selected" }, { type: "element-active" }],
     // другие настройки по желанию
   };
 
   return <Pie {...config} />;
 };
-
-export default SalesByCategoryPieChart;

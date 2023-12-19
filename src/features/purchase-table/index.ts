@@ -1,1 +1,1 @@
-import { PurchaseDashBoard } from "./ui/PurchaseDashBoard";
+export { PurchaseDashBoard, PurchaseTable } from "./ui";

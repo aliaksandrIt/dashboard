@@ -6,7 +6,7 @@ type PrepopulatedDialogProps = {
   handleCancel: () => void;
 };
 
-export default function PrepopulatedDialog({
+export function PrepopulatedDialog({
   isVisible,
   handleOk,
   handleCancel,

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../app/styles/colors";
 type BoxProps = {
   p?: string;
   m?: string;
@@ -14,9 +15,14 @@ type BoxProps = {
   py?: string;
   mx?: string;
   my?: string;
+  borderStyle?: "solid";
+  borderWidth?: string;
+  borderColor?: string;
+  width?: string;
+  radius?: string;
 };
 
-const Box = styled.div<BoxProps>`
+export const Box = styled.div<BoxProps>`
   padding: ${(props) => props.p || "0"};
   margin: ${(props) => props.m || "0"};
   padding-top: ${(props) => props.pt || props.py || "0"};
@@ -27,6 +33,9 @@ const Box = styled.div<BoxProps>`
   margin-bottom: ${(props) => props.mb || props.my || "0"};
   margin-left: ${(props) => props.ml || props.mx || "0"};
   margin-right: ${(props) => props.mr || props.mx || "0"};
+  border-style: ${(props) => props.borderStyle || "solid"};
+  border-width: ${(props) => props.borderWidth || "0"};
+  border-color: ${(props) => props.borderColor || colors.black};
+  border-radius: ${(props) => props.radius || "0"};
+  width: ${(props) => props.width || "auto"};
 `;
-
-export default Box;

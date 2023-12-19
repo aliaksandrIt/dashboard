@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { Dashboard } from "./pages";
 import { PurchasePage } from "./pages";
-import { StyledSider } from "./shared/common";
 import { useState } from "react";
 import { TableOutlined, BarChartOutlined } from "@ant-design/icons";
+import { StyledSider } from "./shared/components";
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);

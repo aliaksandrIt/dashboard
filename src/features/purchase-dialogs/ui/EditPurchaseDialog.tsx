@@ -1,28 +1,24 @@
 import { Modal } from "antd";
+import { PurchaseFrom } from ".";
 
-import PurchaseFrom from "./PurchaseFrom";
-import { Purchase } from "../../../shared/Purchase/types";
-import { editPurchase } from "../../purchase-table/model";
-import { Action } from "../../../shared/common";
+import { Purchase, PurchaseFormValues } from "../../../shared/Purchase/types";
+import { Action } from "../../../shared/types";
 
 type PurchaseDialogProps = {
   actions: Action[];
   isModalVisible: boolean;
   onOpen: (value: boolean) => void;
   currentPurchase: Purchase;
+  onSubmit: (values: PurchaseFormValues) => void;
 };
 
-export default function EditPurchaseDialog({
+export function EditPurchaseDialog({
   isModalVisible,
   onOpen,
   actions,
   currentPurchase,
+  onSubmit,
 }: PurchaseDialogProps) {
-  const onEditFinish = (values: any) => {
-    editPurchase(currentPurchase.id, values);
-    onOpen(false);
-  };
-
   return (
     <Modal
       title="Edit Purchase"
@@ -32,7 +28,7 @@ export default function EditPurchaseDialog({
     >
       <PurchaseFrom
         initialValues={currentPurchase}
-        submit={onEditFinish}
+        submit={onSubmit}
         actions={actions}
       />
     </Modal>

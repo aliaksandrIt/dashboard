@@ -1,17 +1,22 @@
 import { PurchaseDashBoard } from "../features/purchase-table/ui/PurchaseDashBoard";
-import { AppHeader } from "../shared/common";
-import Box from "../shared/components/Box";
-import { Header1 } from "../shared/components/StyledHeader";
+import { AppHeader, StyledContent } from "../shared/components";
+import { Box } from "../shared/components";
+import { Title } from "../shared/components/Title";
+import { colors } from "../app/styles/colors";
 
 export function PurchasePage() {
   return (
     <>
       <AppHeader>
         <Box mx="20px">
-          <Header1>Purchase List</Header1>
+          <Title color={colors.white} type="h1">
+            Purchase List
+          </Title>
         </Box>
       </AppHeader>
-      <PurchaseDashBoard />;
+      <StyledContent>
+        <PurchaseDashBoard />;
+      </StyledContent>
     </>
   );
 }

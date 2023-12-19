@@ -10,7 +10,6 @@ export const SalesOverTimeLineChart: React.FC<LineChartProps> = ({ data }) => {
     data,
     xField: "date",
     yField: "totalSales",
-    // Дополнительные настройки...
   };
 
   return <Line {...config} />;

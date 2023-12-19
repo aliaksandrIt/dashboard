@@ -12,19 +12,19 @@ import dayjs from "dayjs";
 import {
   Category,
   Purchase,
-  PurchaseSubmitType,
+  PurchaseFormValues,
 } from "../../../shared/Purchase/types";
-import { Action } from "../../../shared/common";
+import { Action } from "../../../shared/types";
 
 type PurchaseFromProps = {
-  submit: (values: PurchaseSubmitType) => void;
+  submit: (values: PurchaseFormValues) => void;
   actions: Action[];
   initialValues?: Purchase;
 };
 
 const { Option } = Select;
 
-export default function PurchaseFrom({
+export function PurchaseFrom({
   submit,
   actions,
   initialValues,

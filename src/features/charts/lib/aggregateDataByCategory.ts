@@ -1,12 +1,13 @@
-import { Category } from "../../../shared/Purchase/types";
-import { purchaseStore } from "../../purchase-table/model";
+import { Category, Purchase } from "../../../shared/Purchase/types";
 
 export type AggregatedDataItem = {
   category: Category;
   count: number;
 };
 
-export const aggregateDataByCategory = (): AggregatedDataItem[] => {
+export const aggregateDataByCategory = (
+  purchases: Purchase[]
+): AggregatedDataItem[] => {
   const countByCategory: Record<Category, number> = {
     [Category.Meat]: 0,
     [Category.Fruits]: 0,
@@ -14,7 +15,7 @@ export const aggregateDataByCategory = (): AggregatedDataItem[] => {
     [Category.Fish]: 0,
   };
 
-  purchaseStore.purchaseList.forEach((purchase) => {
+  purchases.forEach((purchase) => {
     countByCategory[purchase.category] += 1;
   });
 

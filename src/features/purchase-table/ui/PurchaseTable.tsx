@@ -1,11 +1,9 @@
-import { Button, Table, Tooltip } from "antd";
+import { Button, Table } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Purchase } from "../../../shared/Purchase/types";
 import { memo } from "react";
-import { categoryFilters, getDataForChart } from "../lib/filters";
+import { categoryFilters } from "../lib/filters";
 import { Key } from "antd/es/table/interface";
-import { QuestionCircleOutlined } from "@ant-design/icons";
-import { LineChartComponent } from "./LineChartComponent";
 import { breakpoints } from "../../../app/styles/breakPoints";
 
 type PurchaseTableProps = {
@@ -32,14 +30,6 @@ function PurchaseTableComponent({
       key: "productName",
       sorter: (a: Purchase, b: Purchase) =>
         a.productName.localeCompare(b.productName),
-      render: (text: string, record: Purchase) => (
-        <Tooltip
-          title={<LineChartComponent data={getDataForChart(record)} />}
-          placement="right"
-        >
-          {text} <QuestionCircleOutlined />
-        </Tooltip>
-      ),
     },
     {
       title: "Category",
